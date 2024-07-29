@@ -1,1 +1,1 @@
-json-server --watch db.json cargar BD
+Project to practice Angular
