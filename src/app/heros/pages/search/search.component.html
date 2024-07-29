@@ -1,0 +1,37 @@
+
+<div fxLayout="column">
+    <div>
+        <h1>Hero Finder</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div>
+        <h3>Finder</h3>
+
+        <mat-form-field class="example-full-width">
+            <input  type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    [(ngModel)]="term"
+                    [matAutocomplete]="auto"
+                    (input)="searching()">
+
+            <mat-autocomplete   autoActiveFirstOption 
+                 #auto="matAutocomplete"
+                (optionSelected)="optionSelected( $event )">
+                <mat-option *ngFor="let hero of heros" [value]="hero">
+                    {{hero.superhero}}
+                </mat-option>
+                <mat-option *ngIf="heros.length===0 && term.length>0" value="">
+                    It could not be found "{{term}}"
+                </mat-option>
+            </mat-autocomplete>
+
+        </mat-form-field>     
+    </div>
+
+    <div>
+        <pre>{{ selectedHero | json }}</pre>
+    </div>
+
+</div>
